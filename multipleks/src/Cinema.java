@@ -26,7 +26,7 @@ public class Cinema {
         System.out.println("--- REPERTUAR KINA: " + name + " ---");
         for (Screening s : screenings) {
 
-            System.out.println("Film: " + s.getMovie().getTitle() + " | Godzina: " + s.getStartTime());
+            System.out.println("Data: " + s.getDate() + " | Film: " + s.getMovie().getTitle() + " | Godzina: " + s.getStartTime());
         }
     }
 

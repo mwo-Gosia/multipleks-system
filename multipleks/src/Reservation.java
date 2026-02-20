@@ -15,6 +15,8 @@ public class Reservation {
     public void printReservationDetails() {
         System.out.println("--- SZCZEGÓŁY REZERWACJI ---");
         System.out.println("Film: " + screening.getMovie().getTitle());
+        System.out.println("Data: " + screening.getDate());
+        System.out.println("Godzina: " + screening.getStartTime());
         System.out.println("Klient: " + (customer != null ? customer.getName() : "Anonimowy"));
         System.out.print("Miejsca: ");
         for (Seat s : reservedSeats) {
