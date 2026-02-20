@@ -28,19 +28,45 @@ public class Main {
         Seat seat3 = room1.getSeats().get(2);
 
         // below you will find sample function executions
-        cinema1.printProgramme();
-        Screening screening = cinema1.getScreenings().get(0);
-        screening.reservePlaces("H34", "H35", "H36"); // seats number given
-        screening.reservePlaces(seat1, seat2, seat3); // other option
-        screening.reservePlaces(customer, "H34", "H35", "H36"); // reservation for registered customer
-        movie1 = cinema1.findMovie("James Bon");
-        if (movie1 != null) {
-            System.out.println("Znaleziono film: " + movie1.getTitle());
-        }
+//        cinema1.printProgramme();
+//        Screening screening = cinema1.getScreenings().get(0);
+//        screening.reservePlaces("H34", "H35", "H36"); // seats number given
+//        screening.reservePlaces(seat1, seat2, seat3); // other option
+//        screening.reservePlaces(customer, "H34", "H35", "H36"); // reservation for registered customer
+//        movie1 = cinema1.findMovie("James Bon");
+//        if (movie1 != null) {
+//            System.out.println("Znaleziono film: " + movie1.getTitle());
+//        }
         System.out.println("\n=== LISTA WSZYSTKICH KIN W SYSTEMIE ===");
         for (Cinema c : system.getCinemas()) {
             c.printProgramme();
         }
 
+        // Wyświetlenie repertuaru
+        System.out.println("\n[TEST 1] Repertuar pierwszego kina:");
+        cinema1.printProgramme();
+
+        // Rezerwacja VIP (z dopłatą)
+        System.out.println("\n[TEST 2] Rezerwacja seansu VIP:");
+        VipScreening vipShow = new VipScreening(movie1, room1, "2026-02-24", "21:00", "23:00", 15.0);
+        cinema1.addScreening(vipShow);
+        Reservation resVip = vipShow.reservePlaces(customer, "H32", "H35");
+        if (resVip != null) resVip.printReservationDetails();
+
+        // Rezerwacja 3D (z okularami)
+        System.out.println("\n[TEST 3] Rezerwacja seansu 3D:");
+        Screening3D show3D = new Screening3D(movie2, room2, "2026-02-23", "14:00", "16:30", 5.0);
+        cinema2.addScreening(show3D);
+        Reservation res3D = show3D.reservePlaces(customer, "A1", "A2");
+        if (res3D != null) res3D.printReservationDetails();
+
+        // Wyszukiwanie filmu
+        System.out.println("\n[TEST 4] Wyszukiwanie filmu:");
+        Movie foundMovie = cinema1.findMovie("James Bond");
+        if (foundMovie != null) {
+            System.out.println("Znaleziono: " + foundMovie.getTitle() + " (gatunek filmowy: " + foundMovie.getType() + ")");
+        } else {
+            System.out.println("Nie znaleziono filmu.");
+        }
     }
 }
