@@ -18,10 +18,15 @@ public class Reservation {
         System.out.println("Data: " + screening.getDate());
         System.out.println("Godzina: " + screening.getStartTime());
         System.out.println("Klient: " + (customer != null ? customer.getName() : "Anonimowy"));
+        double pricePerTicket = screening.getFinalPrice();
+        double total = reservedSeats.size() * pricePerTicket;
         System.out.print("Miejsca: ");
         for (Seat s : reservedSeats) {
             System.out.print(s.getSeatCode() + " ");
         }
+        System.out.println();
+        System.out.println("Cena za bilet: " + pricePerTicket + " PLN");
+        System.out.println("ŁĄCZNIE DO ZAPŁATY: " + total + " PLN");
         System.out.println("\n---------------------------");
     }
 }

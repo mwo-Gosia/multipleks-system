@@ -7,13 +7,15 @@ public class Screening {
     private String endTime;
     private Room room;
     private Movie movie;
+    private double basePrice;
 
-    public Screening(Movie movie, Room room, String date, String startTime, String endTime) {
+    public Screening(Movie movie, Room room, String date, String startTime, String endTime, double basePrice) {
         this.movie = movie;
         this.room = room;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.basePrice = basePrice;
     }
 
     public void reservePlaces(String... seatCodes) {
@@ -60,4 +62,6 @@ public class Screening {
     public String getStartTime() { return startTime; }
     public Room getRoom() { return room; }
     public String getDate() { return date; }
+    public double getFinalPrice() { return basePrice;
+    }
 }

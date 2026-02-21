@@ -9,7 +9,7 @@ public class Main {
         Movie movie1 = new Movie("James Bond", 120, "Akcja");
         Room room1 = new Room(1, 10, 50);
 
-        Screening screening1 = new Screening(movie1, room1, "2026-02-20", "18:00", "20:00");
+        Screening screening1 = new Screening(movie1, room1, "2026-02-20", "18:00", "20:00", 15.00);
         cinema1.addScreening(screening1);
 
         Cinema cinema2 = new Cinema("Kino Galeria", "ul. Krakowska 10");
@@ -19,7 +19,7 @@ public class Main {
         cinema2.addRoom(room2);
 
         Movie movie2 = new Movie("Avatar", 160, "Sci-Fi");
-        Screening screening2 = new Screening(movie2, room2, "2026-02-21", "20:00", "22:40");
+        Screening screening2 = new Screening(movie2, room2, "2026-02-21", "20:00", "22:40", 15.00);
         cinema2.addScreening(screening2);
 
         Customer customer = new Customer("Jan Kowalski");
@@ -48,23 +48,25 @@ public class Main {
 
         // Rezerwacja VIP (z dopłatą)
         System.out.println("\n[TEST 2] Rezerwacja seansu VIP:");
-        VipScreening vipShow = new VipScreening(movie1, room1, "2026-02-24", "21:00", "23:00", 15.0);
+        VipScreening vipShow = new VipScreening(movie1, room1, "2026-02-24", "21:00", "23:00", 15.0, 20.0);
         cinema1.addScreening(vipShow);
         Reservation resVip = vipShow.reservePlaces(customer, "H32", "H35");
         if (resVip != null) resVip.printReservationDetails();
 
         // Rezerwacja 3D (z okularami)
         System.out.println("\n[TEST 3] Rezerwacja seansu 3D:");
-        Screening3D show3D = new Screening3D(movie2, room2, "2026-02-23", "14:00", "16:30", 5.0);
+        Screening3D show3D = new Screening3D(movie2, room2, "2026-02-23", "14:00", "16:30", 15.0, 25.0);
         cinema2.addScreening(show3D);
         Reservation res3D = show3D.reservePlaces(customer, "A1", "A2");
         if (res3D != null) res3D.printReservationDetails();
 
         // Wyszukiwanie filmu
-        System.out.println("\n[TEST 4] Wyszukiwanie filmu:");
+        System.out.println("\n[TEST 4] Wyszukiwanie filmu i cennik:");
         Movie foundMovie = cinema1.findMovie("James Bond");
         if (foundMovie != null) {
             System.out.println("Znaleziono: " + foundMovie.getTitle() + " (gatunek filmowy: " + foundMovie.getType() + ")");
+            System.out.println("Cena za seans standardowy: " + screening1.getFinalPrice() + " PLN");
+            System.out.println("Cena za seans VIP: " + vipShow.getFinalPrice() + " PLN");
         } else {
             System.out.println("Nie znaleziono filmu.");
         }
