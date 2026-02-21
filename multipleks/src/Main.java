@@ -67,8 +67,6 @@ public class Main {
             System.out.println("Znaleziono: " + foundMovie.getTitle() + " (gatunek filmowy: " + foundMovie.getType() + ")");
             System.out.println("Cena za seans standardowy: " + screening1.getFinalPrice() + " PLN");
             System.out.println("Cena za seans VIP: " + vipShow.getFinalPrice() + " PLN");
-        } else {
-            System.out.println("Nie znaleziono filmu.");
         }
     }
 }
