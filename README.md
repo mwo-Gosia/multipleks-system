@@ -7,5 +7,5 @@ Każde posiada oddzielny repertuar i sale.
 
 Diagram klas:
 
-<img width="657" height="659" alt="diagram klas" src="https://github.com/user-attachments/assets/e8cb9207-018c-452b-bfe5-65af86833b13" />
+<img width="556" height="546" alt="diagram klas" src="https://github.com/user-attachments/assets/33e7f0e4-08f4-49c6-965d-96a72e1439d4" />
 
